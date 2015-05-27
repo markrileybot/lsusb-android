@@ -19,9 +19,15 @@
 package com.chrulri.lsusb;
 
 import android.app.ListActivity;
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.hardware.usb.UsbDevice;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ListView;
+import android.widget.Toast;
 
 public class MainActivity extends ListActivity {
 
@@ -55,6 +61,14 @@ public class MainActivity extends ListActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    @Override
+    protected void onListItemClick(ListView l, View v, int position, long id) {
+        UsbDevice item = (UsbDevice) l.getAdapter().getItem(position);
+        ClipboardManager clipboardManager = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+        clipboardManager.setPrimaryClip(ClipData.newPlainText(item.getProductName(), item.toString()));
+        Toast.makeText(this, "Device info copied to clipboard", Toast.LENGTH_SHORT).show();
     }
 
     @Override
