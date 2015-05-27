@@ -21,15 +21,12 @@ package com.chrulri.lsusb;
 import android.content.Context;
 import android.hardware.usb.UsbDevice;
 import android.hardware.usb.UsbManager;
-import android.os.Build;
 import android.os.Build.VERSION;
-import android.text.Editable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 import android.widget.ArrayAdapter;
-import org.w3c.dom.Text;
+import android.widget.TextView;
 
 final class UsbAdapter extends ArrayAdapter<UsbDevice> {
 
